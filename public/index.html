@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Soundalike</title>
+  <meta name="description" content="Paste a song link or let it listen, and get ten songs that sound like it.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="page">
+    <h1 class="title">What sounds like this?</h1>
+
+    <form class="ask" id="ask" novalidate>
+      <label class="ask-label" for="song">Song link, or artist and title</label>
+      <div class="ask-row">
+        <input class="ask-input" id="song" name="song" type="text" autocomplete="off" spellcheck="false"
+               placeholder="https://youtu.be/… or girl in red - we fell in love in october">
+        <button class="button button-primary" id="find" type="submit">Find similar songs</button>
+      </div>
+      <p class="ask-help" id="help">Works with YouTube, Apple Music, Deezer and SoundCloud links.</p>
+      <button class="button button-quiet" id="listen" type="button" hidden>Listen to what’s playing</button>
+    </form>
+
+    <p class="status" id="status" role="status" aria-live="polite"></p>
+    <p class="problem" id="problem" role="alert" hidden></p>
+
+    <section class="results" id="results" hidden aria-labelledby="results-heading">
+      <h2 class="results-heading" id="results-heading">Songs like</h2>
+      <div class="seed" id="seed"></div>
+      <ol class="tracks" id="tracks"></ol>
+      <p class="results-note" id="note" hidden></p>
+    </section>
+  </main>
+
+  <footer class="credits">
+    <p>Similar-song data from <a href="https://www.last.fm" rel="noopener">Last.fm</a>.
+       Previews and artwork from <a href="https://www.deezer.com" rel="noopener">Deezer</a>.</p>
+  </footer>
+
+  <audio id="player" preload="none"></audio>
+  <script src="/app.js" defer></script>
+</body>
+</html>
